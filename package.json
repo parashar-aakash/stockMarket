@@ -1,0 +1,58 @@
+{
+  "name": "javascript-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:extra": "babel-node extra",
+    "start:extraTs": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
+    "start": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
+    "nodemon": "nodemon ./dist/index.js",
+    "lint": "node ./node_modules/tslint/bin/tslint -c tslint.json -p tsconfig.json --exclude 'node_modules/**/*.{j,t}s'",
+    "lint:fix": "npm run lint --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parashar-aakash/javascript-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parashar-aakash/javascript-server/issues"
+  },
+  "homepage": "https://github.com/parashar-aakash/javascript-server#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "body-parser": "^1.19.0",
+    "commitizen": "^4.2.2",
+    "eslint": "^7.11.0",
+    "husky": "^4.3.0",
+    "tsc-watch": "^4.2.9",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.8",
+    "@types/mongoose": "^5.7.37",
+    "@types/node": "^14.14.3",
+    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.11",
+    "node-cron": "^3.0.2",
+    "nodemon": "^2.0.6",
+    "tslint": "^6.1.3"
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec > /dev/tty && git cz --hook|| true",
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint"
+    }
+  }
+}
